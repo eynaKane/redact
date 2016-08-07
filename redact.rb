@@ -1,4 +1,5 @@
 loop do
+  new_text = []
   print "\n\n-----\nEnter original text:  "
   text = gets.chomp.split(' ')
 
@@ -9,12 +10,12 @@ loop do
 
   break if redact.join =~ /exit/i
 
-  print "\nNEW TEXT: "
   text.each do |t|
     if redact.include?(t.downcase)
-      print 'REDACTED '
+      new_text << 'REDACTED '
     else
-      print t + ' '
+      new_text << t + ' '
     end
   end
+  print "\nNEW TEXT: #{new_text.join}"
 end
